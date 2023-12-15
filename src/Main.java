@@ -36,8 +36,8 @@ public class Main {
 
         // delete all number folders except 0 in calculate folder
         for (int i = 0; i < 10; i++) {
-            for (int j = 1; j < 10; j ++) {
-                String x = i + "." + j;
+            for (double j = 0.1; j < 1; j += 0.1) {
+                double x = i + j;
                 File file = new File("calculate/" + x);
                 if (file.exists()) {
                     recursiveDelete(file);
@@ -49,8 +49,8 @@ public class Main {
 
         try {
             //ProcessBuilder builder = new ProcessBuilder();
-            //builder.command("sh", "-c", System.getProperty("user.dir") + "/calculate/Run.sh");
-            ProcessBuilder builder = new ProcessBuilder("bash", System.getProperty("user.dir") + "/calculate/Run.sh");
+            //builder.command("sh", "sudo", System.getProperty("user.dir") + "/calculate/Run.sh");
+            ProcessBuilder builder = new ProcessBuilder("python3", System.getProperty("user.dir") + "/calculate/test.py");
 
             Process process = builder.start();
 
